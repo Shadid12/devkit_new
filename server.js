@@ -8,7 +8,7 @@ app.use(express.static('public'))
 
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!' })
+  res.render('index', { message: 'Hello there!' })
 })
 
 app.listen(3000, function () {
