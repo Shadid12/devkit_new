@@ -2,7 +2,7 @@ module.exports = (app, passport) => {
 
 // root
 app.get('/', function (req, res) {
-  res.render('index', { message: 'Hello there!' })
+  res.render('index', { message: 'Hello there!', auth: req.isAuthenticated() })
 })
 
 // local signup
@@ -17,6 +17,24 @@ app.post('/signup', passport.authenticate('local-signup', {
 	failureFlash : true 
 }))
 
+// Logout 
+
+app.get('/logout', function (req, res) {
+	req.logout();
+	res.redirect('/')
+})
+
+
+// Local Login
+app.get('/login', function (req, res) {
+  res.render('login', { message: req.flash('loginMessage') })
+})
+
+app.post('/login', passport.authenticate('local-login', {
+	successRedirect : '/',
+	failureRedirect : '/login', 
+	failureFlash : true 
+}))
 
 }
 

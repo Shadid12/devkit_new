@@ -1,9 +1,16 @@
 .header.clearfix
-  nav
-    ul.nav.nav-pills
-      li.active(role='presentation')
-        a(href='/') Shizzle!
-      li(role='presentation')
-        a(href='#') Login
-      li(role='presentation')
-        a(href='/signup') Sign up
+	nav
+		if auth
+			ul.nav.nav-pills
+				li.active(role='presentation')
+					a(href='/') Shizzle!
+				li(role='presentation')
+					a(href='/logout') Logout
+		else
+			ul.nav.nav-pills
+				li.active(role='presentation')
+					a(href='/') Shizzle!
+				li(role='presentation')
+					a(href='/login') Login
+				li(role='presentation')
+					a(href='/signup') Sign up
