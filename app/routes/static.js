@@ -7,20 +7,15 @@ app.get('/', function (req, res) {
 
 // local signup
 app.get('/signup', function (req, res) {
-  res.render('signup')
+  res.render('signup',{ message: req.flash('signupMessage') })
 })
 
 
-// local signup
-app.post('/signup', function (req, res) {
-  console.log(JSON.stringify(req.body));
-})
-
-// app.post('/signup', passport.authenticate('local-signup', {
-// 	successRedirect : '/profile',
-// 	failureRedirect : '/signup',
-// 	failureFlash : true 
-// }))
+app.post('/signup', passport.authenticate('local-signup', {
+	successRedirect : '/',
+	failureRedirect : '/signup',
+	failureFlash : true 
+}))
 
 
 }

@@ -1,15 +1,22 @@
 html
 	include ./partials/_lib.pug
 	link(rel='stylesheet', href='/css/forms.css')
+	hr
 	body
 		.container
 			include partials/_nav.pug
+			br
+			if (message.length > 0)
+				.alert.alert-info
+					p= message
 			#signup.row
 				.col-6.col-md-4
-					.form-group
-						input#email.form-control(type='email', placeholder='email')
-					.form-group
-						input#pass.form-control(type='password', placeholder='password')
-					button.btn.btn-info(type='button')#signup Signup
-
-	script(src='/js/signup.js')
+					form(action='/signup', method='post')
+						.form-group
+							label Email
+							input.form-control(type='text', name='email')
+						.form-group
+							label Password
+							input.form-control(type='password', name='password')
+							br
+							button.btn.btn-warning.btn-lg(type='submit') Signup
