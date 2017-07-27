@@ -7,10 +7,7 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))
 
 
-app.get('/', function (req, res) {
-  res.render('index', { message: 'Hello there!' })
-})
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+require('./app/routes/main.js')(app)
+
+app.listen(3000)

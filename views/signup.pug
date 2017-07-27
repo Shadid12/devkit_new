@@ -1,0 +1,15 @@
+html
+	include ./partials/_lib.pug
+	link(rel='stylesheet', href='/css/forms.css')
+	body
+		.container
+			include partials/_nav.pug
+			#signup.row
+				.col-6.col-md-4
+					.form-group
+						input#email.form-control(type='email', placeholder='email')
+					.form-group
+						input#pass.form-control(type='password', placeholder='password')
+					button.btn.btn-info(type='button')#signup Signup
+
+	script(src='/js/signup.js')
