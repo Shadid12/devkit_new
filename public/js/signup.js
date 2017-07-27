@@ -3,8 +3,14 @@ $(document).ready(function(){
 
 		var email = $("#email").val();
 		var pass  = $("#pass").val();
+		var data = {
+			email: email,
+			pass: pass
+		}
 
-		//  now make ajax request
-		
+		$.post('/signup', data, function(d){
+			console.log("done");
+		});
+
 	})
 });

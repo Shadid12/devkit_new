@@ -1,12 +1,19 @@
-const express = require('express')
-const app = express()
-
+const express 	   = require('express')
+const app 		   = express()
+const bodyParser   = require('body-parser')
+const mongoose 	   = require('mongoose')
+const configDB 	   = require('./app/config/db.js')
 
 
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 
+mongoose.connect(configDB.url, () => {
+	console.log("Connected to DB")
+});
 
 require('./app/routes/main.js')(app)
 
