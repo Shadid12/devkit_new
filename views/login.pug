@@ -6,7 +6,9 @@ html
 		.container
 			include partials/_nav.pug
 			br
-			
+			if (message.length > 0)
+				.alert.alert-info
+					p= message
 			#signup.row
 				h1 Login
 				.col-6.col-md-4

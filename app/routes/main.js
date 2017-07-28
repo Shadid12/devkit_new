@@ -1,6 +1,6 @@
 module.exports = (app, passport) => {
 
-require('./static.js')(app, passport)
-
+require('./user.js')(app, passport)
+require('./youtube.js')(app)
 
 }

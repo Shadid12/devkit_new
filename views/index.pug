@@ -5,7 +5,14 @@ html
 		.container
 			include partials/_nav.pug
 			if auth
-				h1 TODO#Implement This page
+				br
+				hr
+				form(action='/search', method='post')
+					.form-group
+						input#formGroupExampleInput.form-control(type='text', placeholder='Search a Song', name='ysearch')
+					button.btn.btn-primary(type='submit') Search
+
+
 			else
 				.jumbotron
 					h1 Welcome to Shizzle-life
