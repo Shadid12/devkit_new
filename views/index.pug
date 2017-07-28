@@ -4,15 +4,18 @@ html
 	body
 		.container
 			include partials/_nav.pug
-			.jumbotron
-				h1 Welcome to Shizzle-life
-				p
-					a.btn.btn-primary.btn-lg(href='/signup') SignUp
-					|  
-					a.btn.btn-primary.btn-lg Login
-				h3 or Get Started with
-					br
-					br
-					a.btn.btn-primary(href='/auth/facebook')
-						span.fa.fa-facebook
-						|  Facebook
+			if auth
+				h1 TODO#Implement This page
+			else
+				.jumbotron
+					h1 Welcome to Shizzle-life
+					p
+						a.btn.btn-primary.btn-lg(href='/signup') SignUp
+						|  
+						a.btn.btn-primary.btn-lg(href='/login') Login
+					h3 or Get Started with
+						br
+						br
+						a.btn.btn-primary(href='/auth/facebook')
+							span.fa.fa-facebook
+							|  Facebook
