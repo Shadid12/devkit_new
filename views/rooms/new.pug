@@ -1,0 +1,17 @@
+html
+	include ../partials/_lib.pug
+	hr
+	body
+		.container
+			include ../partials/_nav.pug
+			.row
+				h1 Create a New Room!!
+				.col-6.col-md-4
+					form(action='/rooms', method='post')
+						.form-group
+							label Name
+							input.form-control(type='text', name='roomname')
+							label Location
+							input.form-control(type='text', name='loc')
+							br
+							button.btn.btn-warning.btn-lg(type='submit') Create!
