@@ -2,10 +2,10 @@ html
 	include partials/_lib.pug
 	.list-group
 		each val in res
-			.form-inline
-				input(type='hidden', name='country', value= val.id.videoId)
+			form.form-inline(action='/addtolist', method='post')
+				input(type='hidden', name='vidid', value= val.id.videoId)
 				#thebut.list-group-item= val.snippet.title
-					select.form-control(name='Room')
+					select.form-control(name='room')
 						option(value='my_party') My Party
 						option(value='side_Street') Side Street
 						option(value='pool') Pool Party
