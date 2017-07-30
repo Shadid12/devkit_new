@@ -10,10 +10,16 @@ app.get('/rooms/new', isLoggedIn, function (req, res) {
   res.render('rooms/new', {auth: req.isAuthenticated() } )
 })
 
+// post new room
 app.post('/rooms',  function(req, res){
 	var name = req.body.roomname
 	var loc	 = req.body.loc
 	room.newRoom(name, loc,  res)
+})
+
+// show room
+app.get('/rooms/:id', function(req, res){
+	room.show(req.params.id, res)
 })
 
 

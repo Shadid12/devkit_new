@@ -1,5 +1,6 @@
 const Room 			 = require('../models/room')
 
+// new action
 exports.newRoom = function(name, loc, res){
 
 
@@ -23,5 +24,17 @@ exports.newRoom = function(name, loc, res){
 	})
 
 
+
+}
+
+// show action
+exports.show =  function(id, res){
+
+	Room.findById(id, function(err, room){
+		if(err){
+			send({error: err})
+		}
+		res.send({room: room})
+	})
 
 }

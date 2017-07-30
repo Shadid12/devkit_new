@@ -18,7 +18,6 @@ app.post('/signup', passport.authenticate('local-signup', {
 }))
 
 // Logout 
-
 app.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/')
