@@ -1,3 +1,6 @@
+const room = require('../controller/rooms_controller')
+
+
 module.exports = (app, passport) => {
 
 
@@ -7,6 +10,11 @@ app.get('/rooms/new', isLoggedIn, function (req, res) {
   res.render('rooms/new', {auth: req.isAuthenticated() } )
 })
 
+app.post('/rooms',  function(req, res){
+	var name = req.body.roomname
+	var loc	 = req.body.loc
+	room.newRoom(name, loc,  res)
+})
 
 
 }
