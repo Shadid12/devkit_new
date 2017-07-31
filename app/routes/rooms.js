@@ -27,6 +27,11 @@ app.get('/rooms', function(req, res){
 	room.index(req, res)
 })
 
+// get my rooms
+app.get('/myrooms', function(req, res){
+	room.members(req, res)
+})
+
 
 }
 

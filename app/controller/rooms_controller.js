@@ -60,3 +60,23 @@ exports.index = function(req, res){
 		res.render('rooms/index', {rooms: rooms, auth: req.isAuthenticated()})
 	})
 }
+
+// show my rooms
+exports.members = function(req, res){
+	User.findById(req.user.id, function(err, user){
+		if(err){
+			res.send({error: err})
+		}
+
+	Room.find()
+	.where('_id')
+	.in(user.rooms)
+	.exec(function (err, records) {
+		res.send({o : records})
+	})
+
+
+
+		// res.send({myrooms: user.rooms})
+	})
+}
