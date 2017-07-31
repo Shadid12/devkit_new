@@ -68,15 +68,12 @@ exports.members = function(req, res){
 			res.send({error: err})
 		}
 
-	Room.find()
-	.where('_id')
-	.in(user.rooms)
-	.exec(function (err, records) {
-		res.send({o : records})
-	})
+		Room.find()
+		.where('_id')
+		.in(user.rooms)
+		.exec(function (err, records) {
+			res.send({myrooms : records})
+		})
 
-
-
-		// res.send({myrooms: user.rooms})
 	})
 }

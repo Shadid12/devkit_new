@@ -6,8 +6,6 @@ html
 				input(type='hidden', name='vidid', value= val.id.videoId)
 				#thebut.list-group-item= val.snippet.title
 					select.form-control(name='room')
-						option(value='my_party') My Party
-						option(value='side_Street') Side Street
-						option(value='pool') Pool Party
-						option(value='audi') Audi
+						each val in myrooms
+							option(value=val._id)= val.name 
 					button.btn.btn-success(type='submit') Submit
