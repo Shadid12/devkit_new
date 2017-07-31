@@ -1,0 +1,14 @@
+html
+	include ../partials/_lib.pug
+	hr
+	body
+		.container
+			include ../partials/_nav.pug
+			.row
+				h1 All Rooms
+				ul.list-group
+					each val in rooms
+						button.list-group-item
+							strong= val.name
+							br 
+							span= val.location

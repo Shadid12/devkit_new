@@ -1,7 +1,7 @@
 const Room 			 = require('../models/room')
 
 // new action
-exports.newRoom = function(name, loc, res){
+exports.newRoom = function(name, loc, res, req){
 
 
 	Room.findOne({'location': loc}, function(err, room, response){
@@ -14,6 +14,8 @@ exports.newRoom = function(name, loc, res){
 			var newRoom = new Room()
 			newRoom.location = loc
 			newRoom.name 	 = name
+			newRoom.owner	 = req.user._id
+			newRoom.members.push(req.user._id)
 			newRoom.save(function(error){
 				if(err){
 					res.send({ error: error })
@@ -37,4 +39,14 @@ exports.show =  function(id, res){
 		res.send({room: room})
 	})
 
+}
+
+// show all rooms 
+exports.index = function(req, res){
+	Room.find({}, function(err, rooms){
+		if(err){
+			throw err
+		}
+		res.render('rooms/index', {rooms: rooms, auth: req.isAuthenticated()})
+	})
 }

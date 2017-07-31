@@ -14,12 +14,17 @@ app.get('/rooms/new', isLoggedIn, function (req, res) {
 app.post('/rooms',  function(req, res){
 	var name = req.body.roomname
 	var loc	 = req.body.loc
-	room.newRoom(name, loc,  res)
+	room.newRoom(name, loc,  res, req)
 })
 
 // show room
 app.get('/rooms/:id', function(req, res){
 	room.show(req.params.id, res)
+})
+
+// get index
+app.get('/rooms', function(req, res){
+	room.index(req, res)
 })
 
 
