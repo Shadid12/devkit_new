@@ -1,4 +1,5 @@
 const Room 			 = require('../models/room')
+const User  		 = require('../models/user')
 
 // new action
 exports.newRoom = function(name, loc, res, req){
@@ -20,6 +21,15 @@ exports.newRoom = function(name, loc, res, req){
 				if(err){
 					res.send({ error: error })
 				}
+
+				User.findById(req.user._id, function(err, aUser){
+					if(err){
+						res.send({err: err})
+					}
+					aUser.rooms.push(newRoom._id)
+					aUser.save()
+				})
+
 				res.send({room: newRoom})
 			})
 		}
