@@ -1,0 +1,10 @@
+html
+	include ../partials/_lib.pug
+	hr
+	body
+		.container
+			include ../partials/_nav.pug
+			.row
+				h1#joinroom= room.name
+					button.btn.btn-success Join
+				h3= room.location

@@ -8,7 +8,8 @@ html
 				h1 All Rooms
 				ul.list-group
 					each val in rooms
-						button.list-group-item
+						- var ref = "/rooms/" + val.id; 
+						a.list-group-item(href=ref)
 							strong= val.name
 							br 
 							span= val.location

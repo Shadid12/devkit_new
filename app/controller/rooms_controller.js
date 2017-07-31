@@ -34,9 +34,9 @@ exports.show =  function(id, res){
 
 	Room.findById(id, function(err, room){
 		if(err){
-			send({error: err})
+			res.send({error: err})
 		}
-		res.send({room: room})
+		res.render('rooms/show', {room: room})
 	})
 
 }
