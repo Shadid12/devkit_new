@@ -9,10 +9,5 @@ app.post('/search', function (req, res) {
 })
 
 
-app.post('/addtolist', function(req, res){
-	console.log(req.body.vidid)
-	console.log(req.body.room)
-})
-
 
 }

@@ -6,6 +6,10 @@ const configDB 	   = require('./app/config/db.js')
 const passport 	   = require('passport')
 const flash        = require('connect-flash')
 const session      = require('express-session')
+const http         = require('http').Server(app)
+const io 		   = require('socket.io')(http)
+
+app.set('port', 3000)
 
 app.set('view engine', 'pug')
 app.use(express.static('public'))
@@ -27,6 +31,6 @@ require('./app/config/passport.js')(passport)
 
 
 // routes
-require('./app/routes/main.js')(app, passport)
+require('./app/routes/main.js')(app, passport, io)
 
-app.listen(3000)
+http.listen(3000)
