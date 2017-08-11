@@ -72,7 +72,8 @@ exports.members = function(req, res){
 		.where('_id')
 		.in(user.rooms)
 		.exec(function (err, records) {
-			res.send({myrooms : records})
+			res.render('rooms/index', {myrooms : records})
+			// res.send({myrooms : records})
 		})
 
 	})

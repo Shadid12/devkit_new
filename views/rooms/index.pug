@@ -4,12 +4,7 @@ html
 	body
 		.container
 			include ../partials/_nav.pug
-			.row
-				h1 All Rooms
-				ul.list-group
-					each val in rooms
-						- var ref = "/rooms/" + val.id; 
-						a.list-group-item(href=ref)
-							strong= val.name
-							br 
-							span= val.location
+			hr
+			div.list-group
+				each val in myrooms
+					a.list-group-item(href="/rooms/" + val._id)= val.name

@@ -15,12 +15,20 @@ io.on('connection', function(socket){
 app.post('/playlist/add', function(req, res){
 	var video = req.body.vidid
 	var room  = req.body.room
+	
 	Room.findById(room, function(err, troom){
 		if(err){
 			res.send({error: err})
 		}
-		res.send({room: troom})
+		troom.playlist.youtube.push(video)
+		troom.save(function(error){
+			if(err){
+				res.send({error: error})
+			}
+			res.send({room: troom})
+		})
 	})
+
 })
 
 }

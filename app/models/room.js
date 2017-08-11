@@ -5,7 +5,11 @@ var roomSchema = mongoose.Schema({
 	name: 		String,
 	location: 	String,
 	owner:      String,
-	members:    []
+	members:    [],
+	
+	playlist: {
+		youtube: [] 
+	}
 })
 
 
