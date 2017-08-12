@@ -6,5 +6,5 @@ html
 			include ../partials/_nav.pug
 			hr
 			div.list-group
-				each val in myrooms
+				each val in rooms
 					a.list-group-item(href="/rooms/" + val._id)= val.name

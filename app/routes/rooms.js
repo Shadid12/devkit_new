@@ -32,6 +32,10 @@ app.get('/myrooms', function(req, res){
 	room.members(req, res)
 })
 
+// join a room
+app.post('/rooms/join',  function(req, res){
+	room.join(req, res)
+})
 
 
 

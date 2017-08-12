@@ -78,3 +78,28 @@ exports.members = function(req, res){
 
 	})
 }
+
+// joins room
+exports.join = function(req, res){
+	User.findById(req.user.id, function(err, user){
+		if(err){
+			res.send({error: err})
+		}
+		user.rooms.push(req.body.room_id)
+		user.save(function(error, done){
+			Room.findById(req.body.room_id, function(err, aroom){
+				if(err){
+					res.send({error: err})
+				}
+				aroom.members.push(user._id)
+				aroom.save(function(err, success){
+					if(!err){
+						res.send({success: success})
+					}
+				})
+
+			})
+		})
+
+	})
+}

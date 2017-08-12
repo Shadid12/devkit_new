@@ -6,8 +6,10 @@ html
 			include ../partials/_nav.pug
 			.row
 				h1#joinroom= room.name
-					button.btn.btn-success Join
 				h3= room.location
+				form(action='/rooms/join', method='post')
+						input(type='hidden', name='room_id', value=room._id)
+						button.btn.btn-success.btn-lg(type='submit') Join!
 				hr
 				.col
 					h4 Now playing
@@ -20,4 +22,5 @@ html
 						each val in room.playlist.youtube
 							a.list-group-item= val
 
-		script(src='/js/play.js')
+		script(src='/js/socket.io.js')
+		script(src='/js/rooms/show.js')
