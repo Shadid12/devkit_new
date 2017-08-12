@@ -5,13 +5,13 @@ html
 		.container
 			include ../partials/_nav.pug
 			.row
-				div= room
 				h1#joinroom= room.name
 					button.btn.btn-success Join
 				h3= room.location
 				hr
 				.col
 					h4 Now playing
+					input(id='nowplaying' type='hidden', name='country', value=room.playlist.youtube[0])
 					#player
 					
 					hr
@@ -20,5 +20,4 @@ html
 						each val in room.playlist.youtube
 							a.list-group-item= val
 
-	script(src='/js/play.js').
-		aroom = "#{room}"	
+		script(src='/js/play.js')
