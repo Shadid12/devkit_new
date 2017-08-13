@@ -3,32 +3,39 @@ const Room = require('../models/room')
 module.exports = (app, passport, io) => {
 
 io.on('connection', function(socket){
-	console.log('a user is connected')
-
-	socket.on('disconnect', function(){
-		console.log('user disconnected')
+	socket.on('pl', function(msg){
+		console.log(msg)
+		var channel = 'someroom'
+		io.emit(channel, msg.song)
 	})
-
 })
 
 
-app.post('/playlist/add', function(req, res){
-	var video = req.body.vidid
-	var room  = req.body.room
+// app.post('/playlist/add', function(req, res){
+// 	var video = req.body.vidid
+// 	var room  = req.body.room
 	
-	Room.findById(room, function(err, troom){
-		if(err){
-			res.send({error: err})
-		}
-		troom.playlist.youtube.push(video)
-		troom.save(function(error){
-			if(err){
-				res.send({error: error})
-			}
-			res.send({room: troom})
-		})
-	})
+// 	Room.findById(room, function(err, troom){
+// 		if(err){
+// 			res.send({error: err})
+// 		}
+// 		troom.playlist.youtube.push(video)
+// 		troom.save(function(error){
+// 			if(err){
+// 				res.send({error: error})
+// 			}
 
-})
+// 			// after the video is added broadcast through socket
+
+// 			io.on('connection', function(socket){
+// 				socket.join('chatroom')
+// 				socket.broadcast.to('chatroom').emit('message', 'this is a message')
+// 			})
+
+// 			res.send({room: troom})
+// 		})
+// 	})
+
+// })
 
 }

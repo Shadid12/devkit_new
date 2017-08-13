@@ -1,5 +1,12 @@
-var socket = io();
+var run = function(id){
+	var s  = '#s' + id;
+	var sel = $(s).find(':selected').text();
+	var o = {
+		room: sel,
+		song: id
+	}
 
-var submitFunc = function(videoId){
-	console.log(videoId);
+	var socket = io();
+	socket.emit('pl', o)
+
 }

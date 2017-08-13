@@ -2,12 +2,13 @@ html
 	include partials/_lib.pug
 	.list-group
 		each val in res
-			form.form-inline(method='post' action='/playlist/add')
-				input(type='hidden', name='vidid', value= val.id.videoId)
-				#thebut.list-group-item= val.snippet.title
-					select.form-control(name='room')
-						each val in myrooms
+			input(type='hidden', name='vidid', value= val.id.videoId)
+			div.list-group-item= val.snippet.title
+				- var k = val.id.videoId
+				select.form-control(name='room', id='s' + k)
+					each val in myrooms
 							option(value=val._id)= val.name
-					button.btn.btn-success(type='submit') Submit
+			button.btn.btn-success(onclick="run('" + val.id.videoId + "')") Submit
+
 	script(src='/js/socket.io.js')
 	script(src='/js/playlist.js')
