@@ -15,7 +15,14 @@ socket.on(roomid, function(msg){
 	$('#stuff').append("<a class='list-group-item' id='"+ msg + "'>" +  msg + "</a>")
 
 
-    // create youtube player
+  setTimeout(function(){
+
+
+
+runplayer(msg);
+
+
+function runplayer(msg){
     var player;
     player = new YT.Player('player', {
           height: '390',
@@ -26,20 +33,26 @@ socket.on(roomid, function(msg){
             'onStateChange': onPlayerStateChange
           }
     });
-    
-    // autoplay video
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
+  }
 
-    // when video ends
-    function onPlayerStateChange(event) {        
-        if(event.data === 0) {            
-        	console.log('video done');
-        }
-    }
+  // // autoplay video
+  function onPlayerReady(event) {
+      event.target.playVideo();
+  }
+
+  // // when video ends
+  function onPlayerStateChange(event) {        
+      if(event.data === 0) {            
+        console.log('video done');
+      }
+  }
 
 
+
+
+
+  }, 300, msg);
+  
 
 });
 
