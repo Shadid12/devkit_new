@@ -1,17 +1,15 @@
 $(document).ready(function(){
 
 var socket = io.connect();
-var playList = [];
-var currentTrack = playList[0];
-
-socket.on('someroom', function(msg){
-
-	playList.push(msg);
-	console.log(playList);
-	console.log(currentTrack);
 
 
+var roomid = $('#room_id').val();
 
+console.log(roomid);
+
+socket.on(roomid, function(msg){
+
+	
 
 	// append the song to playlist
 	$('#stuff').append("<a class='list-group-item' id='"+ msg + "'>" +  msg + "</a>")
@@ -22,7 +20,7 @@ socket.on('someroom', function(msg){
     player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId:currentTrack,
+          videoId:msg,
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange

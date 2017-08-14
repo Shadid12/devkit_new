@@ -5,10 +5,11 @@ module.exports = (app, passport, io) => {
 io.on('connection', function(socket){
 	socket.on('pl', function(msg){
 		console.log(msg)
-		var channel = 'someroom'
+		var channel = msg.room
 		io.emit(channel, msg.song)
 	})
 })
+
 
 
 // app.post('/playlist/add', function(req, res){
