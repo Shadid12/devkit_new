@@ -1,12 +1,20 @@
 $(document).ready(function(){
 
 var socket = io.connect();
-
+var playList = [];
+var currentTrack = playList[0];
 
 socket.on('someroom', function(msg){
-	console.log(msg);
-	// $("#video")[0].src = "//www.youtube.com/embed/" + msg + "?rel=0/&autoplay=1";
 
+	playList.push(msg);
+	console.log(playList);
+	console.log(currentTrack);
+
+
+
+
+	// append the song to playlist
+	$('#stuff').append("<a class='list-group-item' id='"+ msg + "'>" +  msg + "</a>")
 
 
     // create youtube player
@@ -14,7 +22,7 @@ socket.on('someroom', function(msg){
     player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: msg,
+          videoId:currentTrack,
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
